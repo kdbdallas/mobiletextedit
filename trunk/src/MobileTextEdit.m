@@ -1,4 +1,5 @@
 #import "MobileTextEdit.h"
+#import "MSAppLauncher.h"
 
 @implementation MobileTextEdit
 
@@ -36,7 +37,7 @@
 		break;
 
 		case 1:	//Open
-			[self launchApplicationWithIdentifier:@"com.googlecode.MobileFinder" suspended:NO];
+			[MSAppLauncher launchApplication: @"com.googlecode.MobileFinder" withApplication: self];
 		break;
 	}
 }
@@ -49,7 +50,6 @@
 - (void) applicationDidFinishLaunching: (id) unused
 {	
     UIWindow *window;
-	mainView = NULL;
 	float navBarWidth = 320.0f;
 	float navBarHeight = 40.0f;
 	float navBarSouthBuffer = 5.0f;
@@ -67,6 +67,7 @@
 	rect.origin.x = rect.origin.y = 0.0f;
 
 	mainView = [[UIView alloc] initWithFrame: rect];
+	[mainView setTapDelegate: self];
 
 	[window setContentView: mainView]; 
 	[window orderFront: self];
@@ -115,7 +116,11 @@
 	}
 	else
 	{
-		[textView setText: @""];
+		[textView setText:
+	        [NSMutableString
+	            stringWithContentsOfFile:[MSAppLauncher readLaunchInfoArgumentFromBundlePath: @"/Applications/TextEdit.app"]
+	            encoding:NSMacOSRomanStringEncoding
+	            error:&error]];
 	}
 }
 
@@ -135,6 +140,21 @@
 		[_newButton setEnabled: TRUE];
 	}
 }
+
+/*- (NSMethodSignature*)methodSignatureForSelector:(SEL)selector {
+ NSLog(@"Requested method for selector: %@", NSStringFromSelector(selector));
+return [super methodSignatureForSelector:selector];
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+NSLog(@"Request for selector: %@", NSStringFromSelector(aSelector));
+return [super respondsToSelector:aSelector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+ NSLog(@"Called from: %@", NSStringFromSelector([anInvocation selector]));
+[super forwardInvocation:anInvocation];
+}*/
 
 - (void) applicationWillSuspend
 {
