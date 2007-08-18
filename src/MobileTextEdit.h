@@ -25,6 +25,7 @@
 		NSArray *buttons;
 		UIApplication *app;
 		UINavBarButton *_newButton;
+		NSFileManager *filemanager;
 }
 
 - (void) resetFileOpButtons;
