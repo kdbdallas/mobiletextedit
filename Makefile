@@ -4,7 +4,7 @@ LDFLAGS=-lobjc -framework CoreFoundation -framework Foundation -framework UIKit 
 
 all:	TextEdit package
 
-TextEdit:	src/main.o src/MobileTextEdit.o src/MSAppLauncher.o
+TextEdit:	src/main.o src/MobileTextEdit.o src/MobileStudio/MSAppLauncher.o
 	$(LD) $(LDFLAGS) -o $@ $^
 
 %.o:	%.m
@@ -23,5 +23,6 @@ package:
 	mv TextEdit ./build/TextEdit.app
 
 clean:
+	rm -f src/MobileStudio/*.o
 	rm -f src/*.o TextEdit
 	rm -rf ./build

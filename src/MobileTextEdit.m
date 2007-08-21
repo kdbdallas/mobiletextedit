@@ -1,5 +1,5 @@
 #import "MobileTextEdit.h"
-#import "MSAppLauncher.h"
+#import "MobileStudio/MSAppLauncher.h"
 
 @implementation MobileTextEdit
 
@@ -37,7 +37,9 @@
 		break;
 
 		case 1:	//Open
-			[MSAppLauncher launchApplication: @"com.googlecode.MobileFinder" withApplication: self];
+			[MSAppLauncher launchApplication: @"com.googlecode.MobileFinder" 
+				withLaunchingAppID: @"com.google.code.MobileTextEdit"
+				withApplication: self];
 		break;
 	}
 }
@@ -102,26 +104,21 @@
     [mainView addSubview:textView];
     [mainView addSubview:kb];
 
-	NSArray *myArgs = [[NSProcessInfo processInfo] arguments];
-
-	if ([myArgs count] > 1)
+	NSString* arg = [MSAppLauncher 
+		readLaunchInfoArgumentForAppID: @"com.google.code.MobileTextEdit" 
+		withApplication: self
+		deletingLaunchPList: TRUE];					
+	if (arg != nil)
 	{
-  		path = [myArgs objectAtIndex:1];
-
-		[textView setText:
-	        [NSMutableString
-	            stringWithContentsOfFile:path
-	            encoding:NSMacOSRomanStringEncoding
-	            error:&error]];
+		NSMutableString* fileData = [NSMutableString
+			stringWithContentsOfFile: arg
+			encoding: NSMacOSRomanStringEncoding
+			error: &error];	
+		path = [[NSString alloc] initWithString: arg];
+		[textView setText: fileData];
 	}
 	else
-	{
-		[textView setText:
-	        [NSMutableString
-	            stringWithContentsOfFile:[MSAppLauncher readLaunchInfoArgumentFromBundlePath: @"/Applications/TextEdit.app"]
-	            encoding:NSMacOSRomanStringEncoding
-	            error:&error]];
-	}
+		[textView setText: @""];
 }
 
 - (void) newButtonPressed
