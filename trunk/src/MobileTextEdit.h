@@ -13,6 +13,7 @@
 #import <UIKit/UINavBarButton.h>
 #import <UIKit/UIButtonBar.h>
 #import <UIKit/UIButtonBarTextButton.h>
+#import "MobileStudio/MSAppLauncher.h"
 
 @interface MobileTextEdit : UIApplication {
         UIView      *mainView;

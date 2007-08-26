@@ -1,5 +1,4 @@
 #import "MobileTextEdit.h"
-#import "MobileStudio/MSAppLauncher.h"
 
 @implementation MobileTextEdit
 
@@ -8,7 +7,7 @@
 	switch (button) 
 	{
 		case 0: //Save
-			if (path != @"")
+			if ([path isEqualToString:@""])
 			{
 				[[textView text]
 				        writeToFile: path
@@ -37,9 +36,10 @@
 		break;
 
 		case 1:	//Open
-			[MSAppLauncher launchApplication: @"com.googlecode.MobileFinder" 
-				withLaunchingAppID: @"com.google.code.MobileTextEdit"
-				withApplication: self];
+			[MSAppLauncher launchApplication: @"com.googlecode.MobileFinder"
+			                withArguments: [[NSArray alloc] initWithObjects: @"com.google.code.MobileTextEdit", nil]
+			                withLaunchingAppID: @"com.google.code.MobileTextEdit"
+							withApplication: self];
 		break;
 	}
 }
