@@ -7,7 +7,7 @@
 	switch (button) 
 	{
 		case 0: //Save
-			if ([path isEqualToString:@""])
+			if ([path isEqualToString:@""] == FALSE)
 			{
 				[[textView text]
 				        writeToFile: path
