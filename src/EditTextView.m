@@ -23,9 +23,24 @@
 {
     if( ! [self isScrolling] )
     {
-	[_delegate toggleKeyboard];
+	if( [_delegate respondsTo:@selector(toggleKeyboard)] )
+	{
+	    [_delegate toggleKeyboard];
+	}
     }
     [super mouseUp:fp8];
+}
+
+- (BOOL)webView:(id)fp8 shouldInsertText:(id)text replacingDOMRange:(id)fp16 givenAction:(int)fp20
+{
+    if( [_delegate respondsTo:@selector(shouldInsertText:)] )
+    {
+	if( ! [_delegate shouldInsertText:text] )
+	{
+	    return FALSE;
+	}
+    }
+    return [super webView:fp8 shouldInsertText:text replacingDOMRange:fp16 givenAction:fp20];
 }
 
 @end
