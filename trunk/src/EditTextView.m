@@ -15,12 +15,17 @@
 
 */
 
-#import <UIKit/UIKit.h>
+#import "EditTextView.h"
 
-#import "MobileTextEdit.h"
+@implementation EditTextView
 
-int main(int argc, char **argv)
+- (void) mouseUp:(struct __GSEvent *)fp8
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	return UIApplicationMain(argc, argv, [MobileTextEdit class]);
+    if( ! [self isScrolling] )
+    {
+	[_delegate toggleKeyboard];
+    }
+    [super mouseUp:fp8];
 }
+
+@end

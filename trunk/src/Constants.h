@@ -15,12 +15,26 @@
 
 */
 
-#import <UIKit/UIKit.h>
+#ifndef CONSTANTS
+#define CONSTANTS
 
-#import "MobileTextEdit.h"
+#define navBarHeight 44.0f
+#define keyboardHeight 235.0f
 
-int main(int argc, char **argv)
-{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	return UIApplicationMain(argc, argv, [MobileTextEdit class]);
-}
+#define defaultPath @"/var/root/Untitled.txt"
+#define defaultFileName @"Untitled.txt"
+
+#define TransitionNone 0
+#define TransitionRightToLeft 1
+#define TransitionLeftToRight 2
+#define TransitionBottomUpSlide 3
+#define TransitionBottomUpCover 4
+#define TransitionTopDownCover 5
+#define TransitionFade 6
+
+#define UIPushButtonStateNormal 0
+#define UIPushButtonStatePressed 1
+#define UIPushButtonStateDisabled 2
+#define UIPushButtonStateSelected 4
+
+#endif // CONSTANTS

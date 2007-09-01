@@ -16,11 +16,17 @@
 */
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UITextField.h>
+#import <UIKit/UITextView.h>
 
-#import "MobileTextEdit.h"
+// This is a dirty hack that to work around an apparent
+// bug in the UIKit include files. Could not get UITextField
+// to take/give a string value so we use a UITextView to do
+// all the interaction and a UITextField for the nice look.
 
-int main(int argc, char **argv)
+@interface MyTextField : UITextField
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	return UIApplicationMain(argc, argv, [MobileTextEdit class]);
+    UITextView *_subView;
 }
+
+@end
