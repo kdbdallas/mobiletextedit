@@ -15,12 +15,13 @@
 
 */
 
-#import <UIKit/UIKit.h>
+#include <UIKit/UIKeyboard.h>
 
-#import "MobileTextEdit.h"
-
-int main(int argc, char **argv)
+@interface EditorKeyboard : UIKeyboard
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	return UIApplicationMain(argc, argv, [MobileTextEdit class]);
 }
+
+- (void)show;
+- (void)hide;
+
+@end

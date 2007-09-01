@@ -15,12 +15,14 @@
 
 */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <UIKit/UITextView.h>
 
-#import "MobileTextEdit.h"
 
-int main(int argc, char **argv)
+@interface EditTextView : UITextView
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	return UIApplicationMain(argc, argv, [MobileTextEdit class]);
 }
+
+
+@end
