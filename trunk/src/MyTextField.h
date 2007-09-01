@@ -19,6 +19,8 @@
 #import <UIKit/UITextField.h>
 #import <UIKit/UITextView.h>
 
+#import "EditTextView.h"
+
 // This is a dirty hack that to work around an apparent
 // bug in the UIKit include files. Could not get UITextField
 // to take/give a string value so we use a UITextView to do
@@ -26,7 +28,7 @@
 
 @interface MyTextField : UITextField
 {
-    UITextView *_subView;
+    EditTextView *_subView;
 }
 
 @end

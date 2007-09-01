@@ -28,7 +28,7 @@
 - (id)initWithFrame: (struct CGRect)rect
 {
     [super initWithFrame:rect];
-    _subView = [[UITextView alloc]
+    _subView = [[EditTextView alloc]
 		   initWithFrame: CGRectMake( 4.0f, 0.0f,
 					      rect.size.width-8,
 					      rect.size.height-4 )];
@@ -69,5 +69,15 @@
 {
     [_subView mouseUp:event];
 }
+
+
+- (BOOL)shouldInsertText: (NSString *)text
+{
+    if( [text isEqualToString:@"\n"] ) {
+	return false;
+    }
+    return true;
+}
+
 
 @end
