@@ -1,0 +1,13 @@
+Release 0.3.1
+-------------
+
+* Fixed a bug where the ENTER key was putting carriage returns into the paths of Saved file
+  (assuming the user pressed it).
+
+
+Release 0.3.0
+-------------
+
+* Moved to a new code base that includes the ability to Save new files and has a popup keyboard.
+* Also has a recent files list for openening until Finder supports that.
+	
