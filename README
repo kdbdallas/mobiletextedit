@@ -1,6 +1,13 @@
 MobileTextEdit
 --------------
 
+Building Instructions:
+1) You will of course need to have the iphone toolchain built.
+2) This package should contain a file called uikit.patch.txt which you should use to patch the UIKit include directory.  It just comments out a lot of stuff in UIWebView.h that croaks the build.
+3) You may also need to create the file "NSObject.h" in the include directory (just do "touch NSObject.h").
+4) Type "make" and the resultant "TextEdit.app" directory should be put into the "build" directory.
+
+
 Part of:
 
 MobileStudio
