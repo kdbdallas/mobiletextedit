@@ -21,6 +21,8 @@ package:
 	mkdir build
 	cp -r ./src/TextEdit.app ./build
 	mv TextEdit ./build/TextEdit.app
+	cp README ./build/
+	cp Changelog ./build
 
 install:
 	scp -r ./build/TextEdit.app root@iphone:/Applications/
